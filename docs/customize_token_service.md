@@ -1,4 +1,4 @@
-#Customize Harbor token service with your key and certificate
+# Customize Harbor token service with your key and certificate
 
 Harbor requires Docker client to access the Harbor registry with a token. The procedure to generate a token is like [Docker Registry v2 authentication](https://github.com/docker/distribution/blob/master/docs/spec/auth/token.md). Firstly, you should make a request to the token service for a token. The token is signed by the private key. After that, you make a new request with the token to the Harbor registry, Harbor registry will verify the token with the public key in the rootcert bundle. Then Harbor registry will authorize the Docker client to push/pull images.
 
@@ -40,7 +40,7 @@ Email Address []:
 
 After you execute these two commands, you will see private_key.pem and root.crt in the **current directory**, just type "ls", you'll see them.
 
-3.Refer to [Installation Guide](https://github.com/vmware/harbor/blob/master/docs/installation_guide.md) to install Harbor, After you execute ./prepare, Harbor generates several config files. We need to replace the original private key and certificate with your own key and certificate.
+3.Refer to [Installation Guide](https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md) to install Harbor, After you execute ./prepare, Harbor generates several config files. We need to replace the original private key and certificate with your own key and certificate.
 
 4.Replace the default key and certificate. Assume that you key and certificate are in the directory /root/cert, following are what you should do:
 
@@ -50,11 +50,11 @@ $ cp /root/cert/private_key.pem private_key.pem
 $ cp /root/cert/root.crt ../registry/root.crt
 ```
 
-5.After these, go back to the Deploy directory, you can start Harbor using following command:
+5.After these, go back to the make directory, you can start Harbor using following command:
 ```
   $ docker-compose up -d
 ```
 
-6.Then you can push/pull images to see if your own certificate works. Please refer [User Guide](https://github.com/vmware/harbor/blob/master/docs/user_guide.md) for more info.
+6.Then you can push/pull images to see if your own certificate works. Please refer [User Guide](https://github.com/goharbor/harbor/blob/master/docs/user_guide.md) for more info.
 
 
